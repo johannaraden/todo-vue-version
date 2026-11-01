@@ -13,6 +13,8 @@ const { tasksDone, totalTasks } = storeToRefs(todoStore);
     <Header :tasksDone="tasksDone" :totalTasks="totalTasks" />
     <TodoForm />
     <TodoGrid />
+    <button @click="todoStore.clearCompleted">Clear Completed</button>
+    <button @click="todoStore.clearAll">Clear All</button>
   </div>
 </template>
 

@@ -9,13 +9,10 @@ const todoStore = useTodoStore();
 </script>
 
 <template>
-  <div class="app">
-    <input
-      type="checkbox"
-      :checked="props.todo.completed"
-      @change="todoStore.toggleTodo(props.todo.id)"
-    />
-    <p>{{ props.todo.text }}</p>
+  <div class="todo-card" :class="{ completed: todo.completed }">
+    <input type="checkbox" :checked="todo.completed" @change="todoStore.toggleTodo(todo.id)" />
+
+    <p class="todo-text">{{ todo.text }}</p>
   </div>
 </template>
 <style scoped></style>

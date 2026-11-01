@@ -39,5 +39,18 @@ export const useTodoStore = defineStore("todos", () => {
     todos.value = todos.value.filter((todo) => !todo.completed);
   }
 
-  return { todos, tasksDone, totalTasks, addTodo, toggleTodo, deleteTodo, clearCompleted };
+  function clearAll() {
+    todos.value = [];
+  }
+
+  return {
+    todos,
+    tasksDone,
+    totalTasks,
+    addTodo,
+    toggleTodo,
+    deleteTodo,
+    clearCompleted,
+    clearAll,
+  };
 });
