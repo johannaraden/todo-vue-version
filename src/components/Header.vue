@@ -1,9 +1,8 @@
-
 <script setup lang="ts">
-defineProps<{
-  tasksDone: number
-  totalTasks: number
-}>()
+const props = defineProps<{
+  tasksDone: number;
+  totalTasks: number;
+}>();
 </script>
 
 <template>
@@ -11,9 +10,7 @@ defineProps<{
     <h1>My tasks</h1>
 
     <div class="task-overview">
-      <p class="summary">
-        You have completed {{ tasksDone }} of {{ totalTasks }} tasks!
-      </p>
+      <p class="summary">You have completed {{ tasksDone }} of {{ totalTasks }} tasks!</p>
     </div>
   </header>
 </template>

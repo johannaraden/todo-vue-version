@@ -1,15 +1,24 @@
 <script setup lang="ts">
-import { Todo } from "../types/todo";
+import { ref } from "vue";
+import { useTodoStore } from "@/stores/todoStore";
 
-const props = defineProps<{
-  todo: Todo;
-}>();
+const todoStore = useTodoStore();
+const newTodo = ref("");
+function handleSubmit() {
+  const text = newTodo.value.trim();
+
+  if (!text) return;
+
+  todoStore.addTodo(text);
+  newTodo.value = "";
+}
 </script>
 
 <template>
-  <div class="app">
-    <input type="string" v-model="props.todo.text" />
-  </div>
+  <form @submit.prevent="handleSubmit">
+    <input type="text" v-model="newTodo" placeholder="Add a new task..." />
+    <button type="submit">Add Todo</button>
+  </form>
 </template>
 
 <style scoped></style>

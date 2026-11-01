@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { Todo } from "../types/todo";
+import type { Todo } from "../types/todo";
+import { useTodoStore } from "@/stores/todoStore";
 
 const props = defineProps<{
   todo: Todo;
 }>();
+const todoStore = useTodoStore();
 </script>
 
 <template>
   <div class="app">
-    <p>Todo Item</p>
+    <input
+      type="checkbox"
+      :checked="props.todo.completed"
+      @change="todoStore.toggleTodo(props.todo.id)"
+    />
     <p>{{ props.todo.text }}</p>
   </div>
 </template>
-
 <style scoped></style>
